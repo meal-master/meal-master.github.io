@@ -1,0 +1,853 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Meal Master</title>
+<meta name="description" content="Home-cooked Sri Lankan rice and curry, cooked each morning and delivered in a steel tiffin around Kandy — Thennekumbura, Kengalla, Mahawatta and Menikhinna. Twenty boxes a day. Order on WhatsApp.">
+<link rel="canonical" href="https://jayanidurajapathirana-dotcom.github.io/mealmaster/">
+<meta property="og:url" content="https://jayanidurajapathirana-dotcom.github.io/mealmaster/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Meal Master">
+<meta property="og:title" content="Meal Master — home-cooked tiffin, Kandy">
+<meta property="og:description" content="Rice and curry cooked the same morning, in a steel tiffin, delivered every day around Kandy. Twenty boxes a day. Order on WhatsApp.">
+<meta property="og:locale" content="en_LK">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#15271F">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Ccircle cx='60' cy='60' r='60' fill='%2315271F'/%3E%3Cpath d='M30 76 L30 44 L45 66 L60 44 L75 66 L90 44 L90 76' fill='none' stroke='%23E8A33D' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Noto+Sans+Sinhala:wght@600&family=Noto+Sans+Tamil:wght@600&display=swap">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FoodEstablishment",
+  "name": "Meal Master",
+  "slogan": "Master your meals.",
+  "description": "Home-cooked Sri Lankan rice and curry, cooked each morning and delivered in a steel tiffin around Kandy. Twenty boxes a day.",
+  "servesCuisine": "Sri Lankan",
+  "priceRange": "LKR 1000–30000",
+  "currenciesAccepted": "LKR",
+  "paymentAccepted": "Bank transfer",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kandy",
+    "addressRegion": "Central Province",
+    "addressCountry": "LK"
+  },
+  "areaServed": ["Thennekumbura", "Kengalla", "Mahawatta", "Menikhinna"],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "07:00",
+    "closes": "20:00"
+  },
+  "makesOffer": [
+    { "@type": "Offer", "name": "One day, basic — two meals", "price": "1000", "priceCurrency": "LKR" },
+    { "@type": "Offer", "name": "One day, with 450g chicken", "price": "1500", "priceCurrency": "LKR" },
+    { "@type": "Offer", "name": "One week, basic", "price": "7500", "priceCurrency": "LKR" },
+    { "@type": "Offer", "name": "One week, with 450g chicken", "price": "10500", "priceCurrency": "LKR" },
+    { "@type": "Offer", "name": "One month, basic", "price": "18000", "priceCurrency": "LKR" },
+    { "@type": "Offer", "name": "One month, with 450g chicken", "price": "30000", "priceCurrency": "LKR" }
+  ]
+}
+</script>
+
+<style>
+/* Layout: stacked tiers, like a tiffin carrier — each band a full-width course
+   over a centred 1120px measure, separated by a thin rule. */
+:root {
+  --paper: #F4F2ED;
+  --card: #FFFFFF;
+  --fg: #15271F;
+  --muted: #5A6B61;
+  --turmeric: #E8A33D;
+  --leaf: #2E6F4E;
+  --line: #D9D5CC;
+  --panel: #15271F;
+  --panel-fg: #F4F2ED;
+  --panel-muted: #A3B4A9;
+  --panel-line: #2C4036;
+  --shadow: rgba(21, 39, 31, .09);
+  --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --body: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E1A14;
+    --card: #17271F;
+    --fg: #EDEAE1;
+    --muted: #9CACA2;
+    --turmeric: #F0B154;
+    --leaf: #74C293;
+    --line: #2A3B32;
+    --panel: #081210;
+    --panel-fg: #F4F2ED;
+    --panel-muted: #9FB0A5;
+    --panel-line: #23342B;
+    --shadow: rgba(0, 0, 0, .45);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E1A14;
+  --card: #17271F;
+  --fg: #EDEAE1;
+  --muted: #9CACA2;
+  --turmeric: #F0B154;
+  --leaf: #74C293;
+  --line: #2A3B32;
+  --panel: #081210;
+  --panel-fg: #F4F2ED;
+  --panel-muted: #9FB0A5;
+  --panel-line: #23342B;
+  --shadow: rgba(0, 0, 0, .45);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--fg);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+h1, h2, h3, h4 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.08; }
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+a { color: var(--leaf); }
+
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding-inline: 20px; }
+.band { padding-block: 84px; border-top: 1px solid var(--line); }
+.eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--leaf); margin-bottom: 14px;
+}
+.band h2 { font-size: clamp(30px, 4.4vw, 46px); font-weight: 800; letter-spacing: -.01em; }
+.lede { color: var(--muted); max-width: 60ch; margin-top: 16px; font-size: 17px; }
+
+.draft { background: var(--turmeric); color: #15271F; font-size: 13px; font-weight: 600; line-height: 1.45; }
+.draft .wrap { padding-block: 10px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.draft strong { font-weight: 800; letter-spacing: .06em; text-transform: uppercase; font-size: 11px; }
+
+.site-head {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: var(--paper); border-bottom: 1px solid var(--line);
+}
+.site-head .wrap { display: flex; align-items: center; gap: 24px; padding-block: 14px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--fg); margin-right: auto; }
+.brand svg { display: block; flex: none; }
+.brand-name { font-size: 19px; font-weight: 900; letter-spacing: .02em; white-space: nowrap; }
+.nav { display: flex; gap: 26px; }
+.nav a {
+  color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 600;
+  padding-block: 4px; border-bottom: 2px solid transparent;
+}
+.nav a:hover { color: var(--fg); border-bottom-color: var(--turmeric); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  font-family: var(--display); font-size: 15px; font-weight: 700;
+  padding: 12px 22px; border-radius: 999px; border: 1.5px solid transparent;
+  text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: transform .12s ease, background-color .12s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn--gold { background: var(--turmeric); color: #15271F; }
+.btn--gold:hover { background: #d59229; }
+.btn--ghost { border-color: var(--panel-line); color: var(--panel-fg); background: transparent; }
+.btn--ghost:hover { border-color: var(--turmeric); color: var(--turmeric); }
+.btn--line { border-color: var(--line); color: var(--fg); background: transparent; }
+.btn--line:hover { border-color: var(--leaf); color: var(--leaf); }
+
+/* ---- hero ---- */
+.hero { background: var(--panel); color: var(--panel-fg); }
+.hero .wrap { padding-block: clamp(60px, 9vw, 104px); }
+.hero-inner { max-width: 760px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--turmeric); margin-bottom: 22px;
+}
+.hero-eyebrow i { width: 34px; height: 3px; background: var(--turmeric); border-radius: 2px; }
+.hero h1 { font-size: clamp(42px, 7.5vw, 82px); font-weight: 900; letter-spacing: -.025em; }
+.hero h1 em { font-style: normal; color: var(--turmeric); }
+.hero p { color: var(--panel-muted); font-size: 18px; max-width: 48ch; margin-top: 22px; }
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px; }
+
+.capacity {
+  margin-top: 44px; padding-top: 26px; border-top: 1px solid var(--panel-line);
+  display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap;
+}
+.capacity b {
+  font-size: 15px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--turmeric);
+}
+.capacity span { font-size: 16px; color: var(--panel-muted); }
+
+/* ---- menu ---- */
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); gap: 18px; margin-top: 44px; }
+.day {
+  background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+  padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 14px;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+.day--feature { border-color: var(--turmeric); border-width: 2px; }
+.day-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.day-name { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.chip { font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; white-space: nowrap; }
+.chip--veg { background: rgba(46, 111, 78, .16); color: var(--leaf); }
+.chip--gold { background: rgba(232, 163, 61, .26); color: var(--fg); }
+.day h3 { font-size: 19px; font-weight: 800; }
+.day ul { display: flex; flex-direction: column; gap: 7px; }
+.day li { font-size: 14.5px; color: var(--muted); padding-left: 15px; position: relative; }
+.day li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 3px; background: var(--turmeric); }
+.day .add { margin-top: auto; padding-top: 13px; border-top: 1px dashed var(--line); font-size: 13.5px; font-weight: 600; }
+.day .add b { color: var(--leaf); font-weight: 800; }
+.note-gold {
+  margin-top: 26px; padding: 18px 22px; border-radius: 12px;
+  background: rgba(232, 163, 61, .14); border-left: 4px solid var(--turmeric);
+  font-size: 15px;
+}
+
+/* ---- plans ---- */
+.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px; align-items: start; }
+.plan { border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px 30px; background: var(--card); display: flex; flex-direction: column; gap: 18px; }
+.plan--best { background: var(--panel); color: var(--panel-fg); border-color: var(--panel); }
+.plan--best .plan-sub, .plan--best li, .plan--best .tier-label { color: var(--panel-muted); }
+.plan--best .plan-row { border-color: var(--panel-line); }
+.plan-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.plan-name { font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.plan-rows { display: flex; flex-direction: column; }
+.plan-row { padding: 14px 0; border-top: 1px solid var(--line); }
+.plan-row:first-child { border-top: 0; padding-top: 0; }
+.tier-label { font-size: 11.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.plan-price { font-size: 36px; font-weight: 900; letter-spacing: -.02em; font-variant-numeric: tabular-nums; margin-top: 4px; }
+.plan-price small { font-size: 15px; font-weight: 700; margin-right: 4px; vertical-align: 6px; }
+.plan-price--sm { font-size: 26px; }
+.plan-what { font-size: 13.5px; font-weight: 600; color: var(--leaf); margin-top: 2px; }
+.plan--best .plan-what { color: var(--turmeric); }
+.plan-sub { font-size: 14.5px; color: var(--muted); }
+.plan-feats { display: flex; flex-direction: column; gap: 9px; }
+.plan-feats li { font-size: 14.5px; color: var(--muted); padding-left: 20px; position: relative; }
+.plan-feats li::before { content: "\2713"; position: absolute; left: 0; top: -1px; color: var(--turmeric); font-weight: 800; font-size: 13px; }
+.plan--best .plan-feats li { color: var(--panel-muted); }
+.plan .btn { margin-top: auto; width: 100%; }
+
+/* ---- paying ---- */
+.pay-card { border: 1px solid var(--line); border-radius: 16px; padding: 28px; background: var(--card); margin-top: 44px; max-width: 640px; }
+.pay-card h3 { font-size: 20px; font-weight: 800; }
+.pay-label { font-size: 11.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--leaf); }
+.acct { margin-top: 20px; border-top: 1px solid var(--line); }
+.acct div { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+.acct dt { color: var(--muted); flex: none; }
+.acct dd { margin: 0; font-weight: 700; text-align: right; user-select: all; font-variant-numeric: tabular-nums; min-width: 0; overflow-wrap: anywhere; }
+.ref {
+  margin-top: 20px; padding: 16px 18px; border-radius: 10px;
+  background: rgba(232, 163, 61, .14); border-left: 4px solid var(--turmeric);
+  font-size: 14.5px;
+}
+.ref b { font-weight: 800; }
+.ref ul { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+.ref li { padding-left: 16px; position: relative; }
+.ref li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 3px; background: var(--turmeric); }
+
+/* ---- areas ---- */
+.route { margin-top: 44px; border: 1px solid var(--line); border-radius: 16px; padding: 28px; background: var(--card); max-width: 760px; }
+.route-time { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--turmeric); font-variant-numeric: tabular-nums; }
+.route h3 { font-size: 21px; font-weight: 800; margin-top: 10px; }
+.stops { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 9px; }
+.stops li {
+  font-size: 14.5px; font-weight: 700;
+  border: 1px solid var(--line); border-radius: 999px; padding: 7px 15px;
+}
+.route p { font-size: 14.5px; color: var(--muted); margin-top: 18px; }
+
+/* ---- order ---- */
+.order { background: var(--panel); color: var(--panel-fg); }
+.order .eyebrow { color: var(--turmeric); }
+.order .lede { color: var(--panel-muted); }
+.order-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; margin-top: 44px; align-items: start; }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.field--full { grid-column: 1 / -1; }
+label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--panel-muted); }
+input, select, textarea {
+  font-family: var(--body); font-size: 15px; color: var(--panel-fg);
+  background: rgba(244, 242, 237, .07);
+  border: 1px solid var(--panel-line); border-radius: 10px; padding: 12px 14px; width: 100%;
+}
+textarea { resize: vertical; min-height: 84px; }
+input:focus-visible, select:focus-visible, textarea:focus-visible,
+.btn:focus-visible, .nav a:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--turmeric); outline-offset: 2px;
+}
+select option { color: #15271F; background: #fff; }
+.form-note { grid-column: 1 / -1; font-size: 13px; color: var(--panel-muted); }
+
+.outbox { background: rgba(244, 242, 237, .07); border: 1px solid var(--panel-line); border-radius: 16px; padding: 24px; }
+.outbox h3 { font-size: 16px; font-weight: 800; letter-spacing: .04em; }
+.outbox p { font-size: 14px; color: var(--panel-muted); margin-top: 10px; }
+pre.msg {
+  margin: 18px 0 0; padding: 16px; border-radius: 10px; overflow-x: auto;
+  background: rgba(0, 0, 0, .3); border: 1px solid var(--panel-line);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.outbox-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.num { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--panel-line); display: flex; flex-direction: column; gap: 6px; }
+.num span { font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--panel-muted); }
+.num b { font-size: 21px; font-weight: 800; font-variant-numeric: tabular-nums; user-select: all; }
+.num .hrs { letter-spacing: 0; text-transform: none; font-weight: 500; }
+
+/* ---- faq ---- */
+.faq { margin-top: 40px; border-top: 1px solid var(--line); }
+details { border-bottom: 1px solid var(--line); }
+summary { cursor: pointer; padding: 20px 40px 20px 0; position: relative; list-style: none; font-family: var(--display); font-size: 17.5px; font-weight: 700; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; position: absolute; right: 6px; top: 17px; font-size: 23px; font-weight: 600; color: var(--turmeric); line-height: 1; }
+details[open] summary::after { content: "\2212"; }
+details p { padding-bottom: 22px; color: var(--muted); max-width: 70ch; font-size: 15.5px; }
+
+/* ---- footer ---- */
+.site-foot { background: var(--panel); color: var(--panel-fg); border-top: 3px solid var(--turmeric); }
+.site-foot .wrap { padding-block: 52px 40px; display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; }
+.site-foot h4 { font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--turmeric); margin-bottom: 16px; }
+.site-foot li, .site-foot p { font-size: 14.5px; color: var(--panel-muted); }
+.site-foot li { margin-bottom: 9px; }
+.site-foot a { color: var(--panel-muted); text-decoration: none; }
+.site-foot a:hover { color: var(--turmeric); }
+.langs { display: flex; flex-direction: column; gap: 7px; margin-top: 16px; }
+.langs b { font-size: 17px; font-weight: 800; color: var(--panel-fg); }
+.langs .si { font-family: 'Noto Sans Sinhala', var(--body); font-size: 16px; font-weight: 600; color: var(--panel-fg); }
+.langs .ta { font-family: 'Noto Sans Tamil', var(--body); font-size: 16px; font-weight: 600; color: var(--panel-fg); }
+.foot-rule { border-top: 1px solid var(--panel-line); }
+.foot-rule .wrap { padding-block: 20px 28px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.foot-rule p { font-size: 13px; }
+
+@media (max-width: 920px) {
+  .order-grid { grid-template-columns: 1fr; gap: 40px; }
+  .plans { grid-template-columns: 1fr; }
+  .site-foot .wrap { grid-template-columns: 1fr 1fr; }
+  .nav { display: none; }
+}
+@media (max-width: 560px) {
+  .site-head .wrap { gap: 12px; padding-block: 11px; }
+  .brand { gap: 9px; }
+  .brand svg { width: 32px; height: 32px; }
+  .brand-name { font-size: 16px; }
+  .site-head .btn { padding: 10px 16px; font-size: 14px; }
+  .band { padding-block: 60px; }
+  form { grid-template-columns: 1fr; }
+  .site-foot .wrap { grid-template-columns: 1fr; }
+  .acct div { flex-direction: column; gap: 2px; }
+  .acct dd { text-align: left; }
+  .pay-card, .route { padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="draft">
+  <div class="wrap">
+    <strong>Draft</strong>
+    <span>The WhatsApp number and bank details are still placeholders, and the weekly menu is last week's. Send me those and I'll swap them in and delete this bar.</span>
+  </div>
+</div>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg width="38" height="38" viewBox="0 0 120 120" role="img" aria-label="Meal Master">
+        <circle cx="60" cy="60" r="60" fill="#15271F"></circle>
+        <path d="M30 76 L30 44 L45 66 L60 44 L75 66 L90 44 L90 76" fill="none" stroke="#E8A33D" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span class="brand-name">MEAL MASTER</span>
+    </a>
+    <nav class="nav">
+      <a href="#menu">This week</a>
+      <a href="#plans">Plans</a>
+      <a href="#pay">Paying</a>
+      <a href="#areas">Areas</a>
+    </nav>
+    <a class="btn btn--gold" href="#order">Order a tiffin</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><i></i> Kandy &middot; home-cooked daily</div>
+      <h1>Master<br>your <em>meals</em>.</h1>
+      <p>Rice and curry cooked the same morning, packed in a steel tiffin and delivered every day of the week. No reheated buffet trays, no mystery gravy, no plastic to throw away.</p>
+      <div class="hero-cta">
+        <a class="btn btn--gold" href="#order">Start a whole month</a>
+      </div>
+      <div class="capacity">
+        <b>Twenty boxes a day</b>
+        <span>One kitchen, one cook. When the twenty are spoken for, that's the day finished.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="menu">
+  <div class="wrap">
+    <div class="eyebrow">This week</div>
+    <h2>One menu a day, written on Sunday.</h2>
+    <p class="lede">Each box is three curries, rice and a sambol. The veg box is the default; chicken, fish or egg is an add-on you pick per day.</p>
+
+    <div class="menu-grid">
+      <div class="day day--feature">
+        <div class="day-top"><div class="day-name">Monday</div><div class="chip chip--veg">Veg</div></div>
+        <h3>Red rice &amp; parippu</h3>
+        <ul><li>Dhal curry</li><li>Beetroot curry</li><li>Kankun mallung</li><li>Pol sambol, papadam</li></ul>
+        <div class="add">Add on: <b>chicken curry</b></div>
+      </div>
+      <div class="day">
+        <div class="day-top"><div class="day-name">Tuesday</div><div class="chip chip--veg">Veg</div></div>
+        <h3>White rice &amp; brinjal moju</h3>
+        <ul><li>Brinjal moju</li><li>Ash plantain curry</li><li>Carrot mallung</li><li>Lunu miris</li></ul>
+        <div class="add">Add on: <b>ambul thiyal</b></div>
+      </div>
+      <div class="day">
+        <div class="day-top"><div class="day-name">Wednesday</div><div class="chip chip--veg">Veg</div></div>
+        <h3>String hoppers &amp; kiri hodi</h3>
+        <ul><li>Fifteen idiyappam</li><li>Kiri hodi</li><li>Seeni sambol</li><li>Coconut sambol</li></ul>
+        <div class="add">Add on: <b>egg curry</b></div>
+      </div>
+      <div class="day">
+        <div class="day-top"><div class="day-name">Thursday</div><div class="chip chip--veg">Veg</div></div>
+        <h3>Red rice &amp; polos</h3>
+        <ul><li>Polos curry (young jackfruit)</li><li>Cashew curry</li><li>Gotukola sambol</li><li>Papadam</li></ul>
+        <div class="add">Add on: <b>devilled chicken</b></div>
+      </div>
+      <div class="day">
+        <div class="day-top"><div class="day-name">Friday</div><div class="chip chip--veg">Veg</div></div>
+        <h3>Yellow rice &amp; cashew</h3>
+        <ul><li>Kaju maluwa</li><li>Dhal curry</li><li>Beans curry</li><li>Seeni sambol</li></ul>
+        <div class="add">Add on: <b>fish cutlets</b></div>
+      </div>
+      <div class="day">
+        <div class="day-top"><div class="day-name">Saturday</div><div class="chip chip--gold">Special</div></div>
+        <h3>Lamprais</h3>
+        <ul><li>Baked in banana leaf</li><li>Frikkadels, seeni sambol</li><li>Ash plantain, brinjal</li><li>Limited batch</li></ul>
+        <div class="add">Order by <b>Friday noon</b></div>
+      </div>
+    </div>
+
+    <p class="note-gold"><strong>Poya days:</strong> the kitchen runs vegetarian only. The week's menu goes out every Sunday evening, so you always know before you're charged.</p>
+  </div>
+</section>
+
+<section class="band" id="plans">
+  <div class="wrap">
+    <div class="eyebrow">Plans</div>
+    <h2>One day, one week, or one month.</h2>
+    <p class="lede">Every box is cooked in a home kitchen the morning you eat it &mdash; rice, three vegetable curries and a sambol, with nothing out of a packet. No preservatives, no colouring, no oil poured in to make it look rich. It's the food a Sri Lankan family actually eats at lunch, in the portions a working adult actually needs. Each plan comes in two sizes: the basic box, or the same box with 450g of chicken curry in it.</p>
+
+    <div class="plans">
+      <div class="plan">
+        <div class="plan-top"><div class="plan-name">One day</div></div>
+        <div class="plan-rows">
+          <div class="plan-row">
+            <div class="tier-label">Basic</div>
+            <div class="plan-price"><small>Rs</small>1,000</div>
+            <div class="plan-what">Rice, curry &amp; sambol &middot; two meals</div>
+          </div>
+          <div class="plan-row">
+            <div class="tier-label">With chicken</div>
+            <div class="plan-price plan-price--sm"><small>Rs</small>1,500</div>
+            <div class="plan-what">Rice, curry &amp; 450g chicken</div>
+          </div>
+        </div>
+        <ul class="plan-feats">
+          <li>Cooked at 6 am, eaten by noon</li>
+          <li>Three curries, never the same two days running</li>
+          <li>Steel tiffin, no plastic to throw out</li>
+        </ul>
+        <p class="plan-sub">For trying it before you commit to a week.</p>
+        <a class="btn btn--line" href="#order">Order one day</a>
+      </div>
+
+      <div class="plan">
+        <div class="plan-top"><div class="plan-name">One week</div></div>
+        <div class="plan-rows">
+          <div class="plan-row">
+            <div class="tier-label">Basic</div>
+            <div class="plan-price"><small>Rs</small>7,500</div>
+            <div class="plan-what">Rice, curry &amp; sambol &middot; seven days</div>
+          </div>
+          <div class="plan-row">
+            <div class="tier-label">With chicken</div>
+            <div class="plan-price plan-price--sm"><small>Rs</small>10,500</div>
+            <div class="plan-what">450g chicken curry every day</div>
+          </div>
+        </div>
+        <ul class="plan-feats">
+          <li>Seven days, weekend included</li>
+          <li>A different menu every day of the week</li>
+          <li>Tell us once what to leave out and we remember</li>
+        </ul>
+        <p class="plan-sub">Enough to stop thinking about lunch for a week.</p>
+        <a class="btn btn--line" href="#order">Start a week</a>
+      </div>
+
+      <div class="plan plan--best">
+        <div class="plan-top">
+          <div class="plan-name">One month</div>
+          <div class="chip chip--gold">Best value</div>
+        </div>
+        <div class="plan-rows">
+          <div class="plan-row">
+            <div class="tier-label">Basic, from</div>
+            <div class="plan-price"><small>Rs</small>18,000</div>
+            <div class="plan-what">Rice, curry &amp; sambol &middot; a whole month</div>
+          </div>
+          <div class="plan-row">
+            <div class="tier-label">With chicken</div>
+            <div class="plan-price plan-price--sm"><small>Rs</small>30,000</div>
+            <div class="plan-what">450g chicken curry every day</div>
+          </div>
+        </div>
+        <ul class="plan-feats">
+          <li>The lowest price per box we do</li>
+          <li>Holds one of the twenty boxes for you daily</li>
+          <li>Days you don't use roll into next month</li>
+        </ul>
+        <p class="plan-sub">A month of home cooking for less than a week of buying lunch out.</p>
+        <a class="btn btn--gold" href="#order">Start a whole month</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="pay">
+  <div class="wrap">
+    <div class="eyebrow">Paying</div>
+    <h2>Bank transfer only.</h2>
+    <p class="lede">No cash, no card, no payment on this site &mdash; nothing here asks for your card details, because there's nowhere for them to go. Every plan is paid by transfer before the first delivery.</p>
+
+    <div class="pay-card">
+      <div class="pay-label">Transfer to</div>
+      <h3>Meal Master</h3>
+      <dl class="acct">
+        <div><dt>Account name</dt><dd>Meal Master</dd></div>
+        <div><dt>Bank</dt><dd>[ bank ]</dd></div>
+        <div><dt>Branch</dt><dd>[ branch ]</dd></div>
+        <div><dt>Account number</dt><dd>[ account number ]</dd></div>
+      </dl>
+      <div class="ref">
+        <b>Put your name and delivery address in the description.</b>
+        Every bank lets you type a description or reference when you transfer, and it prints on the receipt. That line is how we match your money to your order &mdash; without it we're ringing around before the rider leaves.
+        <ul>
+          <li>Your full name, as you gave it on the order</li>
+          <li>Your delivery address, short is fine &mdash; "Kengalla, near the temple"</li>
+        </ul>
+      </div>
+      <p style="margin-top:18px;font-size:14.5px;color:var(--muted)">Send the receipt to our WhatsApp once it's done and we'll confirm the same evening. For a month that renews, set a standing order at your own bank for the 1st &mdash; it costs nothing and you can stop it yourself without asking us.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="areas">
+  <div class="wrap">
+    <div class="eyebrow">Delivery areas</div>
+    <h2>Everywhere inside these four.</h2>
+    <p class="lede">These aren't our only stops &mdash; they're the far edges of the run, the last point we reach in each direction. If you live anywhere in between them, you're inside the circle and we already come past you.</p>
+
+    <div class="route">
+      <div class="route-time">Every day</div>
+      <h3>The outer edge of the route</h3>
+      <ul class="stops">
+        <li>Thennekumbura</li>
+        <li>Mahawatta</li>
+        <li>Menikhinna</li>
+        <li>Kengalla</li>
+      </ul>
+      <p>Anything between these four is covered, so you don't need to see your own road on a list. Past one of them, ask anyway &mdash; the edge moves outward as more people on a road start ordering, and we'll tell you how close we already get.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band order" id="order">
+  <div class="wrap">
+    <div class="eyebrow">Order</div>
+    <h2>Fill this in, send it on WhatsApp.</h2>
+    <p class="lede">This page has no server and takes no payment. It writes your order out as a WhatsApp message and hands it to you &mdash; nothing is sent until you press send yourself.</p>
+
+    <div class="order-grid">
+      <form id="order-form" novalidate>
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Nimal Perera">
+        </div>
+        <div class="field">
+          <label for="f-phone">Your phone</label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="07X XXX XXXX">
+        </div>
+        <div class="field">
+          <label for="f-plan">Plan</label>
+          <select id="f-plan" name="plan">
+            <option>One day &middot; Rs 1,000</option>
+            <option>One week &middot; Rs 7,500</option>
+            <option selected>One month &middot; from Rs 18,000</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-box">Box size</label>
+          <select id="f-box" name="box">
+            <option selected>Basic &mdash; two meals</option>
+            <option>With 450g chicken</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-area">Delivery area</label>
+          <select id="f-area" name="area">
+            <option selected>Thennekumbura</option>
+            <option>Mahawatta</option>
+            <option>Menikhinna</option>
+            <option>Kengalla</option>
+            <option>Somewhere else &mdash; please check</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-start">Start date</label>
+          <input id="f-start" name="start" type="date">
+        </div>
+        <div class="field field--full">
+          <label for="f-address">Address, and where to hand it over</label>
+          <textarea id="f-address" name="address" placeholder="Near the temple, Kengalla &mdash; hand it to anyone at the gate"></textarea>
+        </div>
+        <div class="field field--full">
+          <label for="f-notes">Anything to leave out</label>
+          <input id="f-notes" name="notes" type="text" placeholder="No chilli, no coconut, less rice&hellip;">
+        </div>
+        <div class="field field--full">
+          <button class="btn btn--gold" type="submit">Write my order</button>
+        </div>
+        <p class="form-note">Your name, number and address go in a notebook in the kitchen so the rider can find you. That's the whole database.</p>
+      </form>
+
+      <aside class="outbox" aria-live="polite">
+        <h3 id="out-head">Your order, in words</h3>
+        <p id="out-note">Fill the form and press <strong>Write my order</strong>. The message appears here exactly as it will be sent, so you can read it before anything leaves your phone.</p>
+        <pre class="msg" id="out-msg" hidden></pre>
+        <div class="outbox-actions" id="out-actions" hidden>
+          <a class="btn btn--gold" id="out-wa" href="#" target="_blank" rel="noopener">Open in WhatsApp</a>
+          <button class="btn btn--ghost" type="button" id="out-copy">Copy the message</button>
+        </div>
+        <div class="num">
+          <span>Or just message the kitchen</span>
+          <b id="kitchen-num">[ WhatsApp number ]</b>
+          <span class="hrs">7 am &ndash; 8 pm, every day</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="wrap">
+    <div class="eyebrow">Questions</div>
+    <h2>The things people ask before the first box.</h2>
+    <div class="faq">
+      <details open>
+        <summary>Can I choose what's in the box?</summary>
+        <p>Not the curries &mdash; there's one menu a day, and that's what keeps it fresh and cheap. You choose the basic box or the 450g chicken one, and you can tell us what to leave out, which we honour for every box after that without being reminded.</p>
+      </details>
+      <details>
+        <summary>Why only twenty boxes?</summary>
+        <p>Because one kitchen cooks them all, the same morning, to the count of orders. Twenty is what fits in one run while the food is still hot. A month plan holds one of the twenty for you; day orders take whatever is left.</p>
+      </details>
+      <details>
+        <summary>What if I'm not there when the rider comes?</summary>
+        <p>Name a place and a person on the form &mdash; a gate, a shop, a neighbour. The rider leaves it there and messages you. We don't take the box back for a missed delivery; it's still your box.</p>
+      </details>
+      <details>
+        <summary>How do I pay for a month every month?</summary>
+        <p>A standing order at your own bank, set for the 1st. You control it and can stop it without asking us. If you'd rather not, we'll message you a reminder each month and you transfer manually &mdash; we don't keep card details, because this site has no way to store them.</p>
+      </details>
+      <details>
+        <summary>Can I stop?</summary>
+        <p>Any time, with a message. Days you've paid for and haven't used stay yours &mdash; they roll into the next plan, or we transfer the balance back to the account you paid from.</p>
+      </details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div>
+      <svg width="44" height="44" viewBox="0 0 120 120" role="img" aria-label="Meal Master mark: a steaming bowl of food between two forks">
+        <circle cx="60" cy="60" r="60" fill="#F4F2ED"></circle>
+        <path d="M37 97 L27 57" fill="none" stroke="#15271F" stroke-width="4.5" stroke-linecap="round"></path>
+        <path d="M22 57 L32 57" fill="none" stroke="#15271F" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M22 57 L20 42" fill="none" stroke="#15271F" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M27 57 L27 41" fill="none" stroke="#15271F" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M32 57 L34 42" fill="none" stroke="#15271F" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M83 97 L93 57" fill="none" stroke="#15271F" stroke-width="4.5" stroke-linecap="round"></path>
+        <path d="M88 57 L98 57" fill="none" stroke="#15271F" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M98 57 L100 42" fill="none" stroke="#15271F" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M93 57 L93 41" fill="none" stroke="#15271F" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M88 57 L86 42" fill="none" stroke="#15271F" stroke-width="3.5" stroke-linecap="round"></path>
+        <path d="M60 68 C53 60 67 55 60 46 C56 41 63 38 60 34" fill="none" stroke="#15271F" stroke-width="4" stroke-linecap="round"></path>
+        <path d="M49 71 C44 64 53 59 48 52 C45 48 50 45 48 42" fill="none" stroke="#15271F" stroke-width="4" stroke-linecap="round"></path>
+        <path d="M71 71 C76 64 67 59 72 52 C75 48 70 45 72 42" fill="none" stroke="#15271F" stroke-width="4" stroke-linecap="round"></path>
+        <path d="M42 82 A18 12 0 0 1 78 82 Z" fill="#15271F"></path>
+        <path d="M38 89 A22 15 0 0 0 82 89 Z" fill="#F4F2ED"></path>
+        <rect x="36" y="82" width="48" height="7" rx="3.5" fill="#F4F2ED"></rect>
+      </svg>
+      <div class="langs">
+        <b>MEAL MASTER</b>
+        <span class="si" lang="si">&#3512;&#3539;&#3517;&#3530;&#32;&#3512;&#3535;&#3523;&#3530;&#3495;&#3515;&#3530;</span>
+        <span class="ta" lang="ta">&#2990;&#3008;&#2994;&#3021;&#32;&#2990;&#3006;&#2970;&#3021;&#2975;&#2992;&#3021;</span>
+      </div>
+    </div>
+    <div>
+      <h4>The kitchen</h4>
+      <ul>
+        <li>Cooking from 6 am</li>
+        <li>Twenty boxes a day</li>
+        <li>Vegetarian on Poya</li>
+        <li id="foot-num">[ WhatsApp number ]</li>
+      </ul>
+    </div>
+    <div>
+      <h4>On this page</h4>
+      <ul>
+        <li><a href="#menu">This week's menu</a></li>
+        <li><a href="#plans">Plans and prices</a></li>
+        <li><a href="#pay">Paying</a></li>
+        <li><a href="#areas">Delivery areas</a></li>
+        <li><a href="#order">Order a tiffin</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-rule">
+    <div class="wrap">
+      <p>Meal Master &middot; Kandy, Sri Lanka</p>
+      <p>Master your meals.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------------------------------------------------------------
+     EDIT THESE TWO LINES when you have the real number.
+     PHONE: digits only, country code first, no + and no spaces.
+     e.g. "94771234567" for 077 123 4567
+  ----------------------------------------------------------------*/
+  var PHONE = "";
+  var PHONE_PRETTY = "";
+
+  function byId(id) { return document.getElementById(id); }
+
+  /* default the start date to tomorrow */
+  var now = new Date();
+  var start = new Date(now.getTime() + 86400000);
+  var iso = start.getFullYear() + "-" +
+            String(start.getMonth() + 1).padStart(2, "0") + "-" +
+            String(start.getDate()).padStart(2, "0");
+  var startField = byId("f-start");
+  startField.value = iso;
+  startField.min = iso;
+
+  /* show the number only once a real one is set */
+  if (PHONE_PRETTY) {
+    byId("kitchen-num").textContent = PHONE_PRETTY;
+    byId("foot-num").textContent = PHONE_PRETTY;
+  }
+
+  var outMsg = byId("out-msg");
+  var outActions = byId("out-actions");
+  var outWa = byId("out-wa");
+  var outCopy = byId("out-copy");
+
+  function val(id, fallback) {
+    var v = byId(id).value.trim();
+    return v ? v : fallback;
+  }
+
+  function compose() {
+    var lines = [
+      "Meal Master order",
+      "",
+      "Name: " + val("f-name", "(not given)"),
+      "Phone: " + val("f-phone", "(not given)"),
+      "Plan: " + byId("f-plan").value,
+      "Box: " + byId("f-box").value,
+      "Area: " + byId("f-area").value,
+      "Start: " + val("f-start", "(not given)"),
+      "",
+      "Address:",
+      val("f-address", "(not given)")
+    ];
+    var notes = byId("f-notes").value.trim();
+    if (notes) { lines.push("", "Leave out: " + notes); }
+    lines.push("", "Paying by bank transfer — I'll put my name and address in the description.");
+    return lines.join("\n");
+  }
+
+  byId("order-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var msg = compose();
+
+    outMsg.textContent = msg;
+    outMsg.hidden = false;
+    outActions.hidden = false;
+    byId("out-head").textContent = "Your order, ready to send";
+
+    if (PHONE) {
+      outWa.href = "https://wa.me/" + PHONE + "?text=" + encodeURIComponent(msg);
+      outWa.hidden = false;
+      byId("out-note").textContent = "Read it over, then open WhatsApp. The message is already written — you press send.";
+    } else {
+      outWa.hidden = true;
+      byId("out-note").textContent = "The kitchen's WhatsApp number isn't set on this page yet, so there's nowhere to open. Copy the message and send it to the number you have.";
+    }
+
+    outMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+
+  outCopy.addEventListener("click", function () {
+    function selectInstead() {
+      var r = document.createRange();
+      r.selectNodeContents(outMsg);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+      outCopy.textContent = "Selected — press Ctrl+C";
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(outMsg.textContent).then(function () {
+        outCopy.textContent = "Copied";
+        setTimeout(function () { outCopy.textContent = "Copy the message"; }, 2200);
+      }, selectInstead);
+    } else {
+      selectInstead();
+    }
+  });
+})();
+</script>
+</body>
+</html>
