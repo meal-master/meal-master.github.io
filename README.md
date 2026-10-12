@@ -3,7 +3,7 @@
 Home-cooked Sri Lankan tiffin delivery around Kandy — Thennekumbura,
 Mahawatta, Menikhinna and Kengalla mark the outer edge of the route.
 
-Live site: https://jayanidurajapathirana-dotcom.github.io/mealmaster/
+Live site: https://meal-master.github.io/
 
 ## What this is
 

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jayanidurajapathirana-dotcom.github.io/mealmaster/sitemap.xml
+Sitemap: https://meal-master.github.io/sitemap.xml
