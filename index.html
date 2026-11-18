@@ -397,6 +397,7 @@ details p { padding-bottom: 22px; color: var(--muted); max-width: 70ch; font-siz
       <p>Rice, curry and chicken cooked the same morning and delivered every day of the week. No reheated buffet trays, no mystery gravy, no food that has been sitting out since breakfast.</p>
       <div class="hero-cta">
         <a class="btn btn--gold" href="#order">Start a whole month</a>
+        <a class="btn btn--ghost" id="hero-wa" href="#order" target="_blank" rel="noopener">WhatsApp <b id="hero-num">[ WhatsApp number ]</b></a>
       </div>
       <div class="capacity">
         <b>Twenty boxes a day</b>
@@ -770,6 +771,12 @@ details p { padding-bottom: 22px; color: var(--muted); max-width: 70ch; font-siz
   if (PHONE_PRETTY) {
     byId("kitchen-num").textContent = PHONE_PRETTY;
     byId("foot-num").textContent = PHONE_PRETTY;
+    byId("hero-num").textContent = PHONE_PRETTY;
+  }
+  /* The hero button is a plain jump to the order form until there is a real
+     number to send a message to, so it is never a dead WhatsApp link. */
+  if (PHONE) {
+    byId("hero-wa").href = "https://wa.me/" + PHONE;
   }
 
   var outMsg = byId("out-msg");
